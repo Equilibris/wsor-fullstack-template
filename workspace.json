@@ -1,7 +1,7 @@
 {
-  "version": 2,
-  "projects": {
-    "-": "apps/-",
-    "--e2e": "apps/--e2e"
-  }
+	"version": 2,
+	"projects": {
+		"components": "libs/components",
+		"components-style": "libs/components/style"
+	}
 }

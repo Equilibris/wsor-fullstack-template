@@ -1,0 +1,46 @@
+{
+	"$schema": "http://json-schema.org/schema",
+	"cli": "nx",
+	"$id": "default-library",
+	"type": "object",
+	"properties": {
+		"name": {
+			"type": "string",
+			"description": "Library name",
+			"$default": {
+				"$source": "argv",
+				"index": 0
+			},
+			"x-prompt": "What name would you like to use for the library?",
+			"pattern": "^[a-zA-Z].*$"
+		},
+		"tags": {
+			"type": "string",
+			"description": "Add tags to the library (used for linting).",
+			"alias": "t"
+		},
+		"routing": {
+			"type": "boolean",
+			"description": "Generate library with routes."
+		},
+		"appProject": {
+			"type": "string",
+			"description": "The application project to add the library route to.",
+			"alias": "a"
+		},
+		"publishable": {
+			"type": "boolean",
+			"description": "Create a publishable library."
+		},
+		"setParserOptionsProject": {
+			"type": "boolean",
+			"description": "Whether or not to configure the ESLint \"parserOptions.project\" option. We do not do this by default for lint performance reasons.",
+			"default": false
+		},
+		"standaloneConfig": {
+			"description": "Split the project configuration into <projectRoot>/project.json rather than including it inside workspace.json",
+			"type": "boolean"
+		}
+	},
+	"required": ["name"]
+}
