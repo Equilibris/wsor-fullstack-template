@@ -1,6 +1,6 @@
 # components-style
 
-This library was generated with [Nx](https://nx.dev).
+A collection of stateless styling + typography components.
 
 ## Running unit tests
 
