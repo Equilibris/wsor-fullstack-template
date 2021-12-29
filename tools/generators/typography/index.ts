@@ -5,7 +5,6 @@ import {
 	readProjectConfiguration,
 	generateFiles,
 } from '@nrwl/devkit'
-import { trimEnd } from 'lodash'
 import { join } from 'path'
 
 export default async function (

@@ -1,0 +1,31 @@
+import { Story, Meta } from '@storybook/react';
+import Typography from '@mui/material/Typography';
+
+import {Type<%= name %>, Type<%= name %>Box, Type<%= name %>Props } from './Type<%= name %>';
+
+export default {
+	component: Type<%= name %>,
+	title: 'Type<%= name %>',
+} as Meta
+
+const Standalone: Story<Type<%= name %>Props & {text: string}> = ({text, ...args}) => (
+	<Type<%= name %> {...args}>{text}</Type<%= name %>>
+)
+
+const Boxed: Story<Type<%= name %>Props & {text: string}> = ({text, ...args}) => (
+	<Typography>
+		Lorem <Type<%= name %>Box component='span' {...args}>{text}</Type<%= name %>Box> dolor sit amet.
+	</Typography>
+)
+
+export const Primary = Standalone.bind({})
+Primary.args = {
+	text:'Lorem ipsum dolor sit amet.'
+}
+
+
+export const BoxedPrimary = Boxed.bind({})
+BoxedPrimary.args = {
+	text:'ipsum'
+}
+

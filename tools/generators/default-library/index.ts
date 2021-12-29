@@ -1,9 +1,9 @@
 import { Tree, formatFiles, installPackagesTask } from '@nrwl/devkit'
 import { Linter } from '@nrwl/linter'
-import { libraryGenerator } from '@nrwl/react'
+import { libraryGenerator, storybookConfigurationGenerator } from '@nrwl/react'
 import globalTsInjector from '../global-ts-injector'
 
-export default async function (tree: Tree, { name, schema }: any) {
+export default async function (tree: Tree, { name, ...schema }: any) {
 	await libraryGenerator(tree, {
 		name: name,
 		linter: Linter.EsLint,
@@ -19,9 +19,20 @@ export default async function (tree: Tree, { name, schema }: any) {
 		...schema,
 	})
 
-	// await globalTsInjector(tree, { project: schema.name });
+	const postGenName = name.replace(/\//g, '-')
+
+	await storybookConfigurationGenerator(tree, {
+		name: postGenName,
+
+		configureCypress: false,
+		standaloneConfig: schema.standaloneConfig || false,
+		generateStories: false,
+	})
+
+	await globalTsInjector(tree, { project: postGenName })
 
 	await formatFiles(tree)
+
 	return () => {
 		installPackagesTask(tree)
 	}

@@ -6,7 +6,6 @@ import {
 	generateFiles,
 	readProjectConfiguration,
 } from '@nrwl/devkit'
-import { Linter } from '@nrwl/linter'
 import { trimEnd } from 'lodash'
 import { join } from 'path'
 

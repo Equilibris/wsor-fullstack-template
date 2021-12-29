@@ -4,11 +4,12 @@
 		"**/package-lock.json": false,
 		"pnpm-lock.yaml": false,
 
-		"**/node_modules": true,
+		"**/node_modules": false,
 		"**/__snapshots__": true,
 
 		"**/.DS_Store": true,
 		"**/.gitkeep": true,
 		"**/.git": true
-	}
+	},
+	"typescript.tsdk": "./node_modules/typescript/lib"
 }

@@ -16,14 +16,12 @@
 		"baseUrl": ".",
 		"downlevelIteration": true,
 		"paths": {
-			"@template/components/style": [
-				"libs/components/style/src/index.ts"
-			],
 			"@wsor-template/components": ["libs/components/src/index.ts"],
 			"@wsor-template/components/style": [
 				"libs/components/style/src/index.ts"
 			]
 		}
 	},
+	"include": ["./@types/global.d.ts"],
 	"exclude": ["node_modules", "tmp"]
 }
