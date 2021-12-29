@@ -4,7 +4,7 @@
 		"**/package-lock.json": false,
 		"pnpm-lock.yaml": false,
 
-		"**/node_modules": false,
+		"**/node_modules": true,
 		"**/__snapshots__": true,
 
 		"**/.DS_Store": true,
