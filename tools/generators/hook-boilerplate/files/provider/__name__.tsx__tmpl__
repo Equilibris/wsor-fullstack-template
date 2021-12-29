@@ -1,0 +1,24 @@
+import {
+	createContext,
+	FC,
+	useContext,
+	Dispatch,
+	SetStateAction,
+	useState,
+} from 'react'
+
+export const <%= camelName %>Context = createContext<
+	[boolean, Dispatch<SetStateAction<boolean>>]
+>([true, () => undefined])
+
+export const use<%= name %> = () => useContext(<%= camelName %>Context)
+
+export const <%= name %>Provider: FC = ({ children }) => {
+	const [<%= camelName %>, set<%= name %>] = useState(true)
+
+	return (
+		<<%= camelName %>Context.Provider value={[<%= camelName %>, set<%= name %>]}>
+			{children}
+		</<%= camelName %>Context.Provider>
+	)
+}

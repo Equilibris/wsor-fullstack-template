@@ -1,0 +1,10 @@
+import { renderHook } from '@testing-library/react-hooks'
+import { <%= name %>Provider, use<%= name %> } from './<%= name %>'
+
+describe('<%= name %>', () => {
+	it('should render', () => {
+		const { result } = renderHook(() => use<%= name %>(), {
+			wrapper: <%= name %>Provider,
+		})
+	})
+})

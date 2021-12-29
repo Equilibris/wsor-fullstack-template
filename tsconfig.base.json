@@ -15,6 +15,7 @@
 		"skipDefaultLibCheck": true,
 		"baseUrl": ".",
 		"downlevelIteration": true,
+		"esModuleInterop": true,
 		"paths": {
 			"@wsor-template/components": ["libs/components/src/index.ts"],
 			"@wsor-template/components/style": [

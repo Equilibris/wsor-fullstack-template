@@ -1,0 +1,28 @@
+import { renderHook } from '@testing-library/react-hooks'
+import { <%= camelName %>Reducer, <%= name %>State, <%= name %>Action, initialState } from './<%= name %>'
+import cases from 'jest-in-case'
+import cloneDeep from 'lodash/cloneDeep'
+
+describe('<%= camelName %>Reducer', () => {
+	cases<{
+		name: string
+		init: <%= name %>State
+		result: <%= name %>State
+		action: <%= name %>Action
+	}>(
+		'name',
+		({ action, init, result }) => {
+			const preInit = cloneDeep(init)
+			expect(<%= camelName %>Reducer(init, action)).toEqual(result)
+			expect(preInit).toBe(init)
+		},
+		[
+			{
+				name: 'Reset',
+				init: initialState,
+				action: { type: 'reset' },
+				result: initialState,
+			},
+		]
+	)
+})

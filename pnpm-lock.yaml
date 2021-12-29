@@ -29,6 +29,8 @@ specifiers:
   '@testing-library/react': 12.1.2
   '@testing-library/react-hooks': 7.0.2
   '@types/jest': 27.0.2
+  '@types/jest-in-case': ^1.0.5
+  '@types/lodash': ^4.14.178
   '@types/node': 14.14.33
   '@types/react': 17.0.30
   '@types/react-dom': 17.0.9
@@ -46,6 +48,7 @@ specifiers:
   eslint-plugin-react: 7.26.1
   eslint-plugin-react-hooks: 4.2.0
   jest: 27.2.3
+  jest-in-case: ^1.0.2
   lodash: ^4.17.21
   prettier: ^2.3.1
   react: 17.0.2
@@ -98,6 +101,8 @@ devDependencies:
   '@testing-library/react': 12.1.2_react-dom@17.0.2+react@17.0.2
   '@testing-library/react-hooks': 7.0.2_fc2bb8a5b006d3f25c5f84ea777e678d
   '@types/jest': 27.0.2
+  '@types/jest-in-case': 1.0.5
+  '@types/lodash': 4.14.178
   '@types/node': 14.14.33
   '@types/react': 17.0.30
   '@types/react-dom': 17.0.9
@@ -113,6 +118,7 @@ devDependencies:
   eslint-plugin-react: 7.26.1_eslint@8.2.0
   eslint-plugin-react-hooks: 4.2.0_eslint@8.2.0
   jest: 27.2.3
+  jest-in-case: 1.0.2
   prettier: 2.5.1
   react-test-renderer: 17.0.2_react@17.0.2
   storybook-dark-mode: 1.0.8
@@ -5262,6 +5268,13 @@ packages:
       '@types/istanbul-lib-report': 3.0.0
     dev: true
 
+  /@types/jest-in-case/1.0.5:
+    resolution: {integrity: sha512-QcIc5IqSVfpl+9jFl4/LlZnAPDNYUfLD+VrvtrK/cOx2CbS7K+FoXGIajiaY3gpFAkBiHGV2PThuWrmaRFE/Tg==}
+    dependencies:
+      '@types/jest': 27.0.2
+      '@types/node': 14.14.33
+    dev: true
+
   /@types/jest/27.0.2:
     resolution: {integrity: sha512-4dRxkS/AFX0c5XW6IPMNOydLn2tEhNhJV7DnYK+0bjoJZ+QTmfucBlihX7aoEsh/ocYtkLC73UbnBXBXIxsULA==}
     dependencies:
@@ -5274,6 +5287,10 @@ packages:
 
   /@types/json5/0.0.29:
     resolution: {integrity: sha1-7ihweulOEdK4J7y+UnC86n8+ce4=}
+    dev: true
+
+  /@types/lodash/4.14.178:
+    resolution: {integrity: sha512-0d5Wd09ItQWH1qFbEyQ7oTQ3GZrMfth5JkbN3EvTKLXcHLRDSXeLnlvlOn0wvxVIwK5o2M8JzP/OWz7T3NRsbw==}
     dev: true
 
   /@types/mdast/3.0.10:
@@ -11305,6 +11322,11 @@ packages:
       walker: 1.0.8
     optionalDependencies:
       fsevents: 2.3.2
+    dev: true
+
+  /jest-in-case/1.0.2:
+    resolution: {integrity: sha1-VnRLWvMyIr0KurcM+Rnx0XCrdcw=}
+    engines: {node: '>=4'}
     dev: true
 
   /jest-jasmine2/27.4.5:

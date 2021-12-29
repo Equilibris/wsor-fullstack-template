@@ -1,0 +1,29 @@
+import { useReducer, Reducer } from 'react'
+import cloneDeep from 'lodash/cloneDeep'
+
+export type <%= name %>State = {}
+export type <%= name %>Action =
+	| { type: 'hello' }
+	| { type: 'world' }
+	| { type: 'reset' }
+
+export const initialState: <%= name %>State = {}
+
+export const <%= camelName %>Reducer: Reducer<<%= name %>State, <%= name %>Action> = (
+	previousState,
+	action
+) => {
+	const state = cloneDeep(previousState)
+
+	switch (action.type) {
+		case 'hello':
+			return state
+		case 'world':
+			return state
+		case 'reset':
+			return initialState
+	}
+}
+
+export const use<%= name %>Reducer = (init: <%= name %>State = initialState) =>
+	useReducer(<%= camelName %>Reducer, init)
