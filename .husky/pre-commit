@@ -1,0 +1,4 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+git checkout main .vscode/ && pnpx nx affected --target=lint --base=main --head=HEAD && pnpx nx affected --target=lint --base=HEAD~ --head=HEAD
