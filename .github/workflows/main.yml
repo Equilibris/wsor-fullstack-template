@@ -25,7 +25,8 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: npm ci
-    - run: npm run build --if-present
-    - run: npm test
+	- run: pnpm install
+	- run: pnpx nx affected --target=lint --base=main~1
+	- run: pnpx nx affected --target=test --base=main~1
+	- run: pnpx nx affected --target=e2e --base=main~1
+	- run: pnpx nx affected --target=build --base=main~1
