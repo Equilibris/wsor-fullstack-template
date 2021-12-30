@@ -2,6 +2,7 @@
 	"version": 2,
 	"projects": {
 		"components": "libs/components",
-		"components-style": "libs/components/style"
+		"components-style": "libs/components/style",
+		"context": "libs/context"
 	}
 }
