@@ -34,8 +34,7 @@ jobs:
         with:
           version: 6.0.2
           run_install: true
-      - run: pnpm install
-      - run: pnpx nx affected --target=lint --base=main~1
-      - run: pnpx nx affected --target=test --base=main~1
-      - run: pnpx nx affected --target=e2e --base=main~1
-      - run: pnpx nx affected --target=build --base=main~1
+      - run: pnpx nx affected --target=lint --base=main
+      - run: pnpx nx affected --target=test --base=main
+      - run: pnpx nx affected --target=e2e --base=main
+      - run: pnpx nx affected --target=build --base=main

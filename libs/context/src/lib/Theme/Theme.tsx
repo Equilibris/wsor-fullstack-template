@@ -34,7 +34,7 @@ export const ThemeProvider: FC = ({ children }) => {
 		noSsr: true,
 	})
 
-	const theme = useMemo(
+	const theme: Theme = useMemo(
 		() => (prefersDarkMode ? themes.dark : themes.light),
 		[prefersDarkMode]
 	)
@@ -43,7 +43,7 @@ export const ThemeProvider: FC = ({ children }) => {
 		<MuiTheme theme={theme}>
 			<EmotionThemeProvider theme={theme}>
 				<Global
-					styles={(theme) => css`
+					styles={(theme: Theme) => css`
 						body {
 							background-color: ${theme.palette.background
 								.default};
