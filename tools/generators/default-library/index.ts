@@ -25,7 +25,7 @@ export default async function (
 		component: false,
 		pascalCaseFiles: true,
 		compiler: 'babel',
-		buildable: true,
+		buildable: false,
 		strict: true,
 		...schema,
 	})
