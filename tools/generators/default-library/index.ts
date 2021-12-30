@@ -11,7 +11,10 @@ import { configurationGenerator } from '@nrwl/storybook'
 import globalTsInjector from '../global-ts-injector'
 import { join } from 'path'
 
-export default async function (tree: Tree, { name, ...schema }: any) {
+export default async function (
+	tree: Tree,
+	{ name, storybook, ...schema }: any
+) {
 	await libraryGenerator(tree, {
 		name,
 		linter: Linter.EsLint,
@@ -29,23 +32,25 @@ export default async function (tree: Tree, { name, ...schema }: any) {
 
 	const postGenName = name.replace(/\//g, '-')
 
-	// HACK: Fix bug related to reference removing external type inclusion
-	await configurationGenerator(tree, {
-		name: postGenName,
+	if (storybook) {
+		// HACK: Fix bug related to reference removing external type inclusion
+		await configurationGenerator(tree, {
+			name: postGenName,
 
-		configureCypress: false,
-		standaloneConfig: schema.standaloneConfig || false,
-		uiFramework: '@storybook/react',
-	})
+			configureCypress: false,
+			standaloneConfig: schema.standaloneConfig || false,
+			uiFramework: '@storybook/react',
+		})
 
-	const libraryRoot = readProjectConfiguration(tree, postGenName).root
+		const libraryRoot = readProjectConfiguration(tree, postGenName).root
 
-	updateJson(tree, join(libraryRoot, `./tsconfig.json`), (cfg) => ({
-		...cfg,
-		references: ((cfg?.references as { path: string }[]) || []).filter(
-			({ path }) => !path.includes('storybook')
-		),
-	}))
+		updateJson(tree, join(libraryRoot, `./tsconfig.json`), (cfg) => ({
+			...cfg,
+			references: ((cfg?.references as { path: string }[]) || []).filter(
+				({ path }) => !path.includes('storybook')
+			),
+		}))
+	}
 
 	await globalTsInjector(tree, { project: postGenName })
 

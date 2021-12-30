@@ -14,6 +14,11 @@
 			"x-prompt": "What name would you like to use for the library?",
 			"pattern": "^[a-zA-Z].*$"
 		},
+		"storybook": {
+			"type": "boolean",
+			"description": "Add storybook to the library.",
+			"default": true
+		},
 		"tags": {
 			"type": "string",
 			"description": "Add tags to the library (used for linting).",
