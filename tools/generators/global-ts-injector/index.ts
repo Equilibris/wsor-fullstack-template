@@ -8,28 +8,30 @@ import {
 import { join } from 'path'
 
 const updater = (value: string) => (config: any) => {
-	config.include ??= []
-
-	config.include = config.include.filter(
+	config.files = (config.files ?? []).filter(
 		(x: string) => !x.endsWith('@types/global.d.ts')
 	)
 
-	config.include.push(value)
+	config.files.push(value)
 
 	return config
 }
 
 export default async function (tree: Tree, { project }: { project: string }) {
-	const libraryRoot = readProjectConfiguration(tree, project).root
+	const { projectType, root: root } = readProjectConfiguration(tree, project)
 
-	const layerDelta = [...libraryRoot].reduce((p, c) => p + +(c === '/'), 1)
+	const layerDelta = [...root].reduce((p, c) => p + +(c === '/'), 1)
 	const globalsName = '@types/global.d.ts'
 	const resolvedGlobalLocation = '../'.repeat(layerDelta) + globalsName
 
 	const u = updater(resolvedGlobalLocation)
 
-	updateJson(tree, join(libraryRoot, './tsconfig.lib.json'), u)
-	updateJson(tree, join(libraryRoot, './tsconfig.spec.json'), u)
+	if (projectType === 'library') {
+		updateJson(tree, join(root, './tsconfig.lib.json'), u)
+		updateJson(tree, join(root, './tsconfig.spec.json'), u)
+	} else {
+		updateJson(tree, join(root, './tsconfig.app.json'), u)
+	}
 
 	await formatFiles(tree)
 
