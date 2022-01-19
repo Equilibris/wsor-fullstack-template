@@ -44,10 +44,19 @@ export default async function (
 
 		const libraryRoot = readProjectConfiguration(tree, postGenName).root
 
-		updateJson(tree, join(libraryRoot, `./tsconfig.json`), (cfg) => ({
+		updateJson(
+			tree,
+			join(libraryRoot, `./.storybook/tsconfig.json`),
+			(cfg) => ({
+				...cfg,
+				include: [],
+			})
+		)
+
+		updateJson(tree, join(libraryRoot, `./tsconfig.lib.json`), (cfg) => ({
 			...cfg,
-			references: ((cfg?.references as { path: string }[]) || []).filter(
-				({ path }) => !path.includes('storybook')
+			exclude: (cfg.exclude ?? []).filter(
+				(x: string) => !x.includes('stories')
 			),
 		}))
 	}

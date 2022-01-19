@@ -3,9 +3,18 @@ import Typography from '@mui/material/Typography'
 
 import { TypeBold, TypeBoldBox, TypeBoldProps } from './TypeBold'
 
+import { ThemeProvider } from '@wsor-template/context'
+
 export default {
 	component: TypeBold,
 	title: 'TypeBold',
+	decorators: [
+		(Story) => (
+			<ThemeProvider>
+				<Story />
+			</ThemeProvider>
+		),
+	],
 } as Meta
 
 const Standalone: Story<TypeBoldProps & { text: string }> = ({

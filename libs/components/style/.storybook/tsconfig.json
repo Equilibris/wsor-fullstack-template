@@ -1,6 +1,7 @@
 {
 	"extends": "../tsconfig.json",
 	"compilerOptions": {
+		"composite": true,
 		"emitDecoratorMetadata": true,
 		"outDir": ""
 	},
@@ -15,5 +16,5 @@
 		"../**/*.spec.tsx",
 		"../**/*.spec.jsx"
 	],
-	"include": ["../src/**/*", "*.js"]
+	"include": []
 }

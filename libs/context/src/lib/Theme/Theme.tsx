@@ -42,7 +42,7 @@ export const ThemeProvider: FC = ({ children }) => {
 	return (
 		<MuiTheme theme={theme}>
 			<EmotionThemeProvider theme={theme}>
-				<Global
+				{/* <Global
 					styles={(theme) => css`
 						body {
 							background-color: ${theme.palette.background
@@ -50,7 +50,7 @@ export const ThemeProvider: FC = ({ children }) => {
 							overflow-x: hidden;
 						}
 					`}
-				/>
+				/> */}
 				{children}
 			</EmotionThemeProvider>
 		</MuiTheme>
