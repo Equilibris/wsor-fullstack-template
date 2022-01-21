@@ -1,11 +1,20 @@
 import { Story, Meta } from '@storybook/react';
 import Typography from '@mui/material/Typography';
+import { ThemeProvider } from '@<%= npmScope %>/context'
 
 import {Type<%= name %>, Type<%= name %>Box, Type<%= name %>Props } from './Type<%= name %>';
+
 
 export default {
 	component: Type<%= name %>,
 	title: 'Type<%= name %>',
+	decorators: [
+		(Story) => (
+			<ThemeProvider>
+				<Story />
+			</ThemeProvider>
+		),
+	],
 } as Meta
 
 const Standalone: Story<Type<%= name %>Props & {text: string}> = ({text, ...args}) => (

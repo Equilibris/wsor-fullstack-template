@@ -1,10 +1,19 @@
 import { Story, Meta } from '@storybook/react';
+import { ThemeProvider } from '@<%= npmScope %>/context'
 
 import { <%= name %>, <%= name %>Props } from './<%= name %>';
+
 
 export default {
 	component: <%= name %>,
 	title: '<%= name %>',
+	decorators: [
+		(Story) => (
+			<ThemeProvider>
+				<Story />
+			</ThemeProvider>
+		),
+	],
 } as Meta
 
 const Template: Story<<%= name %>Props> = (args) => (

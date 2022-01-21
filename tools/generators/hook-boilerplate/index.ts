@@ -4,6 +4,7 @@ import {
 	installPackagesTask,
 	readProjectConfiguration,
 	generateFiles,
+	readWorkspaceConfiguration,
 } from '@nrwl/devkit'
 import { join } from 'path'
 import camelCase from 'lodash/camelCase'
@@ -21,6 +22,9 @@ export default async function (
 
 	const libraryRoot = readProjectConfiguration(tree, project).root
 
+	const npmScope =
+		readWorkspaceConfiguration(tree).npmScope ?? 'wsor-template'
+
 	const camelName = name[0].toLowerCase() + name.slice(1)
 
 	const baseFilePath = join(libraryRoot, `./src/lib/use${name}`)
@@ -29,6 +33,7 @@ export default async function (
 	generateFiles(tree, join(__dirname, `./files/${type}`), baseFilePath, {
 		name,
 		camelName,
+		npmScope,
 		tmpl: '',
 	})
 

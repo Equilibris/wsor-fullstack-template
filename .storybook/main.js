@@ -8,4 +8,7 @@ module.exports = {
 	//   // Return the altered config
 	//   return config;
 	// },
+	features: {
+		emotionAlias: false,
+	},
 }

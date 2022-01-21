@@ -1,9 +1,8 @@
 import { Story, Meta } from '@storybook/react'
 import Typography from '@mui/material/Typography'
+import { ThemeProvider } from '@wsor-template/context'
 
 import { TypeBold, TypeBoldBox, TypeBoldProps } from './TypeBold'
-
-import { ThemeProvider } from '@wsor-template/context'
 
 export default {
 	component: TypeBold,
