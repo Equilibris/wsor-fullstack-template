@@ -23,7 +23,7 @@ export default async function (
 
 	const camelName = name[0].toLowerCase() + name.slice(1)
 
-	const baseFilePath = join(libraryRoot, `./src/lib/${name}`)
+	const baseFilePath = join(libraryRoot, `./src/lib/use${name}`)
 	const indexPath = join(libraryRoot, './src/index.ts')
 
 	generateFiles(tree, join(__dirname, `./files/${type}`), baseFilePath, {
@@ -34,7 +34,7 @@ export default async function (
 
 	tree.write(
 		indexPath,
-		`export * from './lib/${name}/${name}';` + tree.read(indexPath)
+		`export * from './lib/use${name}/${name}';` + tree.read(indexPath)
 	)
 
 	await formatFiles(tree)

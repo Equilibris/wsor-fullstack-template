@@ -1,6 +1,6 @@
 # components
 
-A collection of **simple** components with little to none usage of external dependencies. For more complex components using multiple files create a library solely for that component.
+This library was generated with [Nx](https://nx.dev).
 
 ## Running unit tests
 
