@@ -23,7 +23,11 @@ const Standalone: Story<Type<%= name %>Props & {text: string}> = ({text, ...args
 
 const Boxed: Story<Type<%= name %>Props & {text: string}> = ({text, ...args}) => (
 	<Typography>
-		Lorem <Type<%= name %>Box component='span' {...args}>{text}</Type<%= name %>Box> dolor sit amet.
+		{text.replace(/<.*/, '')}
+		<Type<%= name %>Box component='span' {...args}>
+			{text.replace(/.*<|>.*/g, '')}
+		</Type<%= name %>Box>
+		{text.replace(/.*(>|^)/, '')}
 	</Typography>
 )
 
@@ -35,6 +39,6 @@ Primary.args = {
 
 export const BoxedPrimary = Boxed.bind({})
 BoxedPrimary.args = {
-	text:'ipsum'
+	text:'Lorem < ipsum > dolor sit amet.'
 }
 

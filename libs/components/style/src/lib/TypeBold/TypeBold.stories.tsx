@@ -23,11 +23,11 @@ const Standalone: Story<TypeBoldProps & { text: string }> = ({
 
 const Boxed: Story<TypeBoldProps & { text: string }> = ({ text, ...args }) => (
 	<Typography>
-		Lorem{' '}
+		{text.replace(/<.*/, '')}
 		<TypeBoldBox component="span" {...args}>
-			{text}
-		</TypeBoldBox>{' '}
-		dolor sit amet.
+			{text.replace(/.*<|>.*/g, '')}
+		</TypeBoldBox>
+		{text.replace(/.*(>|^)/, '')}
 	</Typography>
 )
 
@@ -38,5 +38,5 @@ Primary.args = {
 
 export const BoxedPrimary = Boxed.bind({})
 BoxedPrimary.args = {
-	text: 'ipsum',
+	text: 'Lorem < ipsum > dolor sit amet.',
 }
